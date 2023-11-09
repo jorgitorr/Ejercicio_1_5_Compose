@@ -13,6 +13,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -170,9 +171,14 @@ fun Actividad5() {
     var myVal by rememberSaveable { mutableStateOf("") }
 
     OutlinedTextField(
-        modifier = Modifier.padding(15.dp),
         value = myVal,
         onValueChange = { myVal = it },
-        label = { Text(text = "Importe") }
+        label = { Text(text = "Importe") },
+        modifier = Modifier.padding(15.dp),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color.LightGray,
+            unfocusedBorderColor = Color.Cyan
+        )
+
     )
 }
