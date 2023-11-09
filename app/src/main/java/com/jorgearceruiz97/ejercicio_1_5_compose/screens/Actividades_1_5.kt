@@ -136,7 +136,7 @@ Actividad 4:
 Sitúa el TextField en el centro de la pantalla y haz que reemplace el valor de una coma por un punto
 y que no deje escribir más de un punto decimal...
 */
-//@Preview
+@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Actividad4() {
@@ -144,9 +144,16 @@ fun Actividad4() {
 
     TextField(
         value = myVal, //es el valor del textField
-        onValueChange = { newValue ->
-            val filteredValue = newValue.replace(",", "").replace(".", ",")
-            myVal = filteredValue //le damos el valor de filetered
+        onValueChange = { // Reemplazar la coma por un punto
+            val newValue = it.replace(',', '.')
+
+            // No permitir más de un punto decimal
+            if (!myVal.contains("..")) {
+                myVal = newValue
+            }else{
+                if(newValue == ".")
+                    myVal = newValue
+            }
         },
         label = { Text( text = "Importe")//etiqueta
         }
@@ -161,7 +168,7 @@ al que debes añadir un padding alrededor de 15 dp y establecer colores diferent
 cuando tenga el foco y no lo tenga.
 A nivel funcional no permitas que se introduzcan caracteres que invaliden un número decimal.
 */
-@Preview
+//@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Actividad5() {
