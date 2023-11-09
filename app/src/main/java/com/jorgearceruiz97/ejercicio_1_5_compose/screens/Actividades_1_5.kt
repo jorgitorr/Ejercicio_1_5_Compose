@@ -13,7 +13,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -144,12 +143,12 @@ fun Actividad4() {
 
     TextField(
         value = myVal,
-        onValueChange = { var text = it
-            if(text.contains(',')){
-                text = text.replace(',','.')
+        onValueChange = { var newValue = it
+            if(newValue.contains(',')){
+                newValue = newValue.replace(',','.')
             }
-            if(text.count{c:Char -> c == '.'} <= 1){
-                myVal= text
+            if(newValue.count{ c:Char -> c == '.'} <= 1){
+                myVal= newValue
             }
         },
         label = { Text(text = "Importe") }
