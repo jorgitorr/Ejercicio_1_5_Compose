@@ -143,20 +143,16 @@ fun Actividad4() {
     var myVal by rememberSaveable { mutableStateOf("") }
 
     TextField(
-        value = myVal, //es el valor del textField
-        onValueChange = { // Reemplazar la coma por un punto
-            val newValue = it.replace(',', '.')
-
-            // No permitir más de un punto decimal
-            if (!myVal.contains("..")) {
-                myVal = newValue
-            }else{
-                if(newValue == ".")
-                    myVal = newValue
+        value = myVal,
+        onValueChange = { var text = it
+            if(text.contains(',')){
+                text = text.replace(',','.')
+            }
+            if(text.count{c:Char -> c == '.'} <= 1){
+                myVal= text
             }
         },
-        label = { Text( text = "Importe")//etiqueta
-        }
+        label = { Text(text = "Importe") }
     )
 }
 
